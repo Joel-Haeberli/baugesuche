@@ -31,3 +31,9 @@
 #loginSpace input {
     width: 100%;
 }
+
+.datagroup {
+    margin-top: 1%;
+    padding: 5px;
+    border: 1px solid #8795AD;
+}
