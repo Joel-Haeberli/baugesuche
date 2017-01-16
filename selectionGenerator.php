@@ -24,7 +24,7 @@
         
         $entries = selectBehoerde($conn);
         foreach ($entries as $entry) {
-            $id = $entry['idBehoerde'];
+            $id = $entry['idBewilligungsbehoerde'];
             $name = $entry['bb_name'];
 
             echo("<option value=" . $id . ">" . $name . "</option>");

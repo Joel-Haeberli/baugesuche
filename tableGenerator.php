@@ -41,16 +41,18 @@
 
         $propertyNameLen = count($propertyName);
 
-        printOutput("Länge der propertyName: " . $propertyNameLen);
-        printOutput("Länge der data: " . count($data));
+        //DEBUG
+        // printOutput("Länge der propertyName: " . $propertyNameLen);
+        // printOutput("Länge der data: " . count($data));
 
         foreach ($data as $row) {
             echo("<tr>");
-            //Aus einem mir nicht erklärbaren Grund wird das Resultat doppelt zurück gegeben. Ich konnte das Problem nicht finden. Wenn ich das Array jedoch nur bis zur hälfte durchgehe, dann geht es. Werde dem Problem in einem späteren Sprnt nachgehen.
+            //Aus einem mir nicht erklärbaren Grund wird das Resultat doppelt zurück gegeben. Ich konnte das Problem nicht finden. Wenn ich das Array jedoch nur bis zur hälfte durchgehe, dann geht es. Werde dem Problem in einem späteren Sprnt nachgehen. Was sicher ist, dass der Fehler bereits bei der Abfrage entsteht. Diese ist jedocg getestet und Valid. Ich nehme an, dass das Prolem bei mysqli_fetch_array() oder array_push() liegt.
             $wholeRow = count($row);
             $halfRow = $wholeRow / 2;
             for ($i = 1; $i	< $halfRow; $i++) {
-                printOutput("Row i: " . $row[$propertyName[$i]]);
+                //DEBUG
+                //printOutput("Row i: " . $row[$propertyName[$i]]);
                 if (isset($row[$propertyName[$i]])) {
                     echo("<td>" . $row[$propertyName[$i]] . "</td>");
                 } else {
@@ -59,7 +61,7 @@
             }
             echo("<td>
             <form method='POST' action='detailProject.php'>
-                <input type='hidden' name='projectId' value=" . $row[$propertyName[0]] . ">
+                <input type='hidden' name='projectId' value='" . $row[$propertyName[0]] . "'>
                     <button type='submit' class='button'>Detail</button>
                 </form>
             </td></tr>");
