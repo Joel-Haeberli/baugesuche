@@ -26,25 +26,16 @@
     <div id="loginSpace">
         <div id="left">
             <?php
-                echo("<p>Details vom Projekt " . $projectId . "</p>");
-                echo("<p>Whole Project: " . implode("",$wholeProject[0]) . "</p>");
                 foreach($wholeProject as $project) {
                     echo("<div class='datagroup'><p>BG-Nummer:" .$project['bg_nr_esag']. "</p>");
                     echo("<p>BG-Eingang-ESAG:" .$project['bg_eingang']. "</p></div>");
-                    echo("<div class='datagroup'><p>Sachbearbeiter:" .$project['sb_name']. "</p>");
-                    echo("<p>Sachbearbeiter-Email:" .$project['sb_email']. "</p>");
-                    echo("<p>Sachbearbeiter-tel:" .$project['sb_tel']. "</p></div>");
+                    //Sachbearbeiter alt
                     echo("<div class='datagroup'><p>Projekt Adresse:" .$project['standortAdresse']. "</p>");
                     echo("<p>Projekt Parzelle:" .$project['standortParzelle']. "</p>");
                     echo("<p>Projekt PLZ:" .$project['standortPLZ']. "</p>");
                     echo("<p>Projekt Ort:" .$project['standortOrt']. "</p>");
                     echo("<p>Projekt Ortsteil:" .$project['standortOrtsteil']. "</p></div>");
-                    echo("<div class='datagroup'><p>Bewilligungsbehörde Name:" .$project['bb_name']. "</p>");
-                    echo("<p>Bewilligungsbehörde Adresse:" .$project['bb_adresse']. "</p>");
-                    echo("<p>Bewilligungsbehörde PLZ:" .$project['bb_plz']. "</p>");
-                    echo("<p>Bewilligungsbehörde Ort:" .$project['bb_ort']. "</p>");
-                    echo("<p>Bewilligungsbehörde BG-Nummer:" .$project['bb_bg_nr']. "</p>");
-                    echo("<p>Bewilligungsbehörde BG-Eingang:" .$project['bb_bg_dat']. "</p></div>");
+                    //Bewilligungsbehörde alt
                     echo("<div class='datagroup'><p>Bauherr Name:" .$project['bh_name']. "</p>");
                     echo("<p>Bauherr Vorname:" .$project['bh_vorname']. "</p>");
                     echo("<p>Bauherr Namenszusatz:" .$project['bh_namenzusatz']. "</p>");
@@ -63,11 +54,11 @@
                     echo("<p>Projektverfasser Ort:" .$project['pv_ort']. "</p>");
                     echo("<p>Projektverfasser Gender:" .$project['pv_gender']. "</p>");
                     echo("<p>Projektverfasser Ansprechperson:" .$project['pv_ansprechperson']. "</p></div>");
-                    echo("<div class='datagroup'><p>Objektart:" .$project['objektart_bezeichnung ']. "</p></div>");
-                    echo("<div class='datagroup'><p>Projektart:" .$project['projektart_bezeichnung']. "</p><div>");
-                    echo("<div class='datagroup'><p>Netzanschluss:" .$project['netzanschluss']. "</p>");
+                    echo("<div class='datagroup'><p>Objektart:" .$project['objektart_bezeichnung']. "</p></div>");
+                    echo("<div class='datagroup'><p>Projektart:" .$project['projektart_bezeichnung']. "</p></div>");
+                    echo("<div class='datagroup'><p>Netzanschluss:" .$project['netzanschlusspunkt']. "</p>");
                     echo("<p>Rohr Hausanschluss:" .$project['rohr_hausanschluss']. "</p>");
-                    echo("<p>Querschnitt Hausanschlussleitung:" .$project['hausanschlussleitung']. "</p>");
+                    echo("<p>Querschnitt Hausanschlussleitung:" .$project['querschnitt_hausanschlussleitung']. "</p>");
                     echo("<p>Absicherung HAK:" .$project['absicherung_hak']. "</p>");
                     echo("<p>Anschlussleistung:" .$project['anschlussleistung']. "</p>");
                     echo("<p>Spezielles:" .$project['spezielles']. "</p>");
@@ -84,22 +75,31 @@
         </div>
         <div id="right">
             <?php
-                if (!($_SESSION['username'] == "gast")) {
-                echo ("<form method='POST' action='editProject.php'>
-                            <input type='hidden' name='projectId' value='" . $projectId . "'>
-                            <input type='submit' class='button' value='Projekt bearbeiten'>
-                        </form><br>
-                        <form method='POST' action='addProperty.php'>
-                            <input type='hidden' name='projectId' value='" . $projectId . "'>
-                            <input type='hidden' name='whichDocument' value='erschliessung'>
-                            <input type='submit' class='button' value='Erschliessung eintragen'>
-                        </form><br>
-                        <form method='POST' action='addProperty.php'>
-                            <input type='hidden' name='projectId' value='" . $projectId . "'>
-                            <input type='hidden' name='whichDocument' value='kosten'>
-                            <input type='submit' class='button' value='Kosten eintragen'>
-                        </form><br>");
-                } 
+                    echo("<div class='datagroup'><p>Sachbearbeiter:" .$project['sb_name']. "</p>");
+                    echo("<p>Sachbearbeiter-Email:" .$project['sb_email']. "</p>");
+                    echo("<p>Sachbearbeiter-tel:" .$project['sb_tel']. "</p></div>");
+                    echo("<div class='datagroup'><p>Bewilligungsbehörde Name:" .$project['bb_name']. "</p>");
+                    echo("<p>Bewilligungsbehörde Adresse:" .$project['bb_adresse']. "</p>");
+                    echo("<p>Bewilligungsbehörde PLZ:" .$project['bb_plz']. "</p>");
+                    echo("<p>Bewilligungsbehörde Ort:" .$project['bb_ort']. "</p>");
+                    echo("<p>Bewilligungsbehörde BG-Nummer:" .$project['bb_bg_nr']. "</p>");
+                    echo("<p>Bewilligungsbehörde BG-Eingang:" .$project['bb_bg_dat']. "</p></div><br><br>");
+                    if (!($_SESSION['username'] == "gast")) {
+                    echo ("<form method='POST' action='editProject.php'>
+                                <input type='hidden' name='projectId' value='" . $projectId . "'>
+                                <input type='submit' class='button' value='Projekt bearbeiten'>
+                            </form><br>
+                            <form method='POST' action='addProperty.php'>
+                                <input type='hidden' name='projectId' value='" . $projectId . "'>
+                                <input type='hidden' name='whichDocument' value='erschliessung'>
+                                <input type='submit' class='button' value='Erschliessung eintragen'>
+                            </form><br>
+                            <form method='POST' action='addProperty.php'>
+                                <input type='hidden' name='projectId' value='" . $projectId . "'>
+                                <input type='hidden' name='whichDocument' value='kosten'>
+                                <input type='submit' class='button' value='Kosten eintragen'>
+                            </form><br>");
+                    } 
             ?>
             <form method='POST' action='createDocument.php'>
                 <input type='hidden' name='projectId' value='[ID]'>
@@ -113,5 +113,8 @@
             </form><br>
         </div>
     </div>
+    <footer>
+      <p>Designed and developed by Joel Häberli</p>
+    </footer>
 </body>
 </html>
