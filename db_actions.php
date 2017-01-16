@@ -108,7 +108,7 @@
     //Returniert alle Projekte -> bei Programmstart
     function selectAllProjects($conn)
     {
-        if ($result = $conn->query("SELECT projekt.bg_nr_esag, projekt.standortAdresse, projekt.standortOrt, projekt.pv_name, projektart.projektart_bezeichnung, objektart.objektart_bezeichnung, sachbearbeiter.sb_name FROM projekt LEFT JOIN projektart ON projekt.projektart_id=projektart.idProjektart LEFT JOIN objektart ON projekt.objektart_id=objektart.idObjektart LEFT JOIN sachbearbeiter ON projekt.sb_id=sachbearbeiter.idSachbearbeiter;")) {
+        if ($result = $conn->query("SELECT projekt.idProjekt, projekt.bg_nr_esag, projekt.standortAdresse, projekt.standortOrt, projekt.pv_name, projektart.projektart_bezeichnung, objektart.objektart_bezeichnung, sachbearbeiter.sb_name FROM projekt LEFT JOIN projektart ON projekt.projektart_id=projektart.idProjektart LEFT JOIN objektart ON projekt.objektart_id=objektart.idObjektart LEFT JOIN sachbearbeiter ON projekt.sb_id=sachbearbeiter.idSachbearbeiter;")) {
             $entries = array();
             while ($entry = mysqli_fetch_array($result)) {
                 array_push($entries, $entry);
