@@ -78,6 +78,12 @@
                 header("Location:errorsite.php");
             }
             break;
+        case 'erschliessung';
+            echo("ERSCHLIESSUNG wird noch implementiert");
+            break;
+        case 'kosten';
+            echo("KOSTEN wird noch implementiert");
+            break;
         default:
             $_SESSION['errortext'] = "Die von Ihnen gewählte Eigenschaft wurde noch nicht oder falsch implementiert.";
             header("Location:errorsite.php");
