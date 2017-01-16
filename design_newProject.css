@@ -1,0 +1,33 @@
+#loginSpace {
+    position: absolute;
+    width: 80%;
+    min-height: 90%;
+    padding-top: 1%;
+    padding-bottom: 10%;
+    left: 20%;
+    background-color: #8795AD;
+}
+
+#left {
+    position: absolute;
+    width: 40%;
+    min-height: 100%;
+    left: 0%;
+    background-color: #8795AD;
+    text-align: left;
+    padding-left: 2%;
+}
+
+#right {
+    position: absolute;
+    width: 40%;
+    min-height: 100%;
+    left: 50%;
+    background-color: #8795AD;
+    text-align: left;
+    padding-left: 2%;
+}
+
+#loginSpace input {
+    width: 100%;
+}

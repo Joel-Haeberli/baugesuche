@@ -1,0 +1,40 @@
+/* Spezielle Spezifikationen für index.php */
+
+#suche {
+  position: absolute;
+  width: 80%;
+  height: 30%;
+  left: 20%;
+  background-color: #8795AD;
+}
+
+#daten {
+  position: absolute;
+  top: 30%;
+  width: 80%;
+  min-height: 63%;
+  left: 20%;
+  background-color: #D5C5B8;
+  text-align: left;
+  padding-left: 1%;
+  padding-top: 1%;
+}
+
+#search_left, #search_right {
+  padding-left: 3%;
+  padding-top: 1.5%;
+}
+
+#search_left {
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  left: 0%;
+}
+
+#search_right {
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  left: 50%;
+}
